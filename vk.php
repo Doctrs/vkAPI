@@ -28,8 +28,9 @@ class vk {
         $params = array();
         foreach($data as $name => $val){
             $params[$name] = $val;
-            $params['access_token'] = $this->token;
         }
+        $params['access_token'] = $this->token;
+        $params['v'] = '3.0';
         $json = file_get_contents('https://api.vk.com/method/' . $method . '?' . http_build_query($params));
         return json_decode($json);
     }
